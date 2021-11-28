@@ -170,11 +170,15 @@ class Reversi:
             board = self.engine.get_board()
         flippable_coords = self.engine.get_flippable_coords()
         if len(flippable_coords) == 0:
-            is_finish = self.engine.pass_turn()
-            if not is_finish:
-                return self.engine.finish()
-            sg.popup("turn change")
-            self.update_layout(window)
+            turnable = self.engine.pass_turn()
+            if turnable:
+                sg.popup("turn change")
+                self.update_layout(window)
+            self.render(window, board, flippable_coords)
+            return self.engine.finish()
+        self.render(window, board, flippable_coords)
+
+    def render(self, window, board, flippable_coords):
         for r, columns in enumerate(board):
             layout_row = []
             for c, v in enumerate(columns):
