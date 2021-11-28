@@ -34,18 +34,14 @@ class Engine:
         return self.board
 
     def flip(self, row, column):
-        print(f"turn: {self.turn}")
-        print(f"row: {row}, column: {column}")
         for flip_len, vector in self.check_flippable([row, column]):
             reference_row = row
             reference_column = column
-            print(f"flip_len {flip_len}, vector: {vector}")
             while flip_len:
                 self.board[reference_row][reference_column] = self.turn
                 flip_len -= 1
                 reference_row += vector[0]
                 reference_column += vector[1]
-        print("------------------------------------------")
 
     def get_piece(self, coord: List[int]):
         return self.board[coord[0]][coord[1]]
