@@ -1,0 +1,16 @@
+{
+  "python.formatting.provider": "black",
+  "[python]": {
+    "editor.formatOnSave": true
+  },
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": true
+},
+"python.linting.flake8Args": [
+  "--max-line-length=120",
+  "--ignore=E203,W503,W504"
+],
+"python.formatting.blackArgs": [
+  "--line-length=120"
+],
+}
